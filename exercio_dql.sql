@@ -5,15 +5,15 @@ SELECT * FROM jogos;
 SELECT nome, telefone FROM clientes;
 
 -- 3. Encontre todos os jogos lançados após o ano de 2020.
-SELECT titulo, ano_lancamento FROM jogos WHERE ano_lancamento > 2000;
+SELECT titulo, ano_lancamento FROM jogos WHERE ano_lancamento > 2020;
 
 -- 4. Liste todos os clientes que moram na cidade de 'Vila Velha'.
-SELECT c.nome, e.cidade FROM clientes c 
-JOIN enderecos e ON c.cliente_id = e.endereco_id 
+SELECT nome, cidade FROM clientes  
+JOIN enderecos  ON clientes.endereco_id = enderecos.endereco_id 
 WHERE cidade = 'Vila Velha';
 
 -- 5. Obtenha todas as locações feitas no último mês (considerando a data atual).
-SELECT * FROM locacoes WHERE data_locacao => DATE_SUB(CURDATE(), INTERVAL 1 MONTH);
+SELECT * FROM locacoes WHERE data_locacao >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH);
 
 -- 6. Liste os jogos disponíveis em ordem crescente de preço da diária.
 SELECT titulo, preco_diaria FROM jogos ORDER BY preco_diaria ASC;
